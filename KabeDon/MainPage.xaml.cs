@@ -43,14 +43,27 @@ namespace KabeDon
 
         private void Image_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            ++i;
-            if (i > 4) i = 1;
+            image.IsTapEnabled = false;
 
-            var mediaUri = new Uri("ms-appx:///Assets/Sound/ah.mp3");
-            PlaySound(mediaUri);
+            var pos = e.GetPosition(image);
 
-            var imageUri = new Uri($"ms-appx:///Assets/Image/Claudia{i}.png");
-            ShowImage(imageUri);
+            var x = pos.X / image.ActualWidth * 1080;
+            var y = pos.Y / image.ActualHeight * 1920;
+
+            foreach (var area in areas)
+            {
+                if (area.X < x && x < area.X + area.Width && area.Y < y && y < area.Y +area.Height)
+                {
+                    var mediaUri = new Uri($"ms-appx:///Assets/Sound/{area.Sound}.mp3");
+                    PlaySound(mediaUri);
+
+                    var imageUri = new Uri($"ms-appx:///Assets/Image/{area.Image}.png");
+                    ShowImage(imageUri);
+
+                    break;
+                }
+            }
+            image.IsTapEnabled = true;
         }
 
         private async void PlaySound(Uri mediaUri)
