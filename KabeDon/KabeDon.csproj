@@ -111,6 +111,11 @@
     <Content Include="Assets\Image\Claudia2.png" />
     <Content Include="Assets\Image\Claudia3.png" />
     <Content Include="Assets\Image\Claudia4.png" />
+    <Content Include="Assets\Sound\ah.mp3" />
+    <Content Include="Assets\Sound\chui.mp3" />
+    <Content Include="Assets\Sound\finish.mp3" />
+    <Content Include="Assets\Sound\oujougiwa.mp3" />
+    <Content Include="Assets\Sound\start.mp3" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

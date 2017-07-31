@@ -36,8 +36,20 @@ namespace KabeDon
         {
             ++i;
             if (i > 4) i = 1;
+
+            var mediaUri = new Uri("ms-appx:///Assets/Sound/ah.mp3");
+            PlaySound(mediaUri);
+
             var imageUri = new Uri($"ms-appx:///Assets/Image/Claudia{i}.png");
             ShowImage(imageUri);
+        }
+
+        private async void PlaySound(Uri mediaUri)
+        {
+            var file = await StorageFile.GetFileFromApplicationUriAsync(mediaUri);
+            var stream = await file.OpenReadAsync();
+            mediaElement.SetSource(stream, file.ContentType);
+            mediaElement.Play();
         }
 
         private async void ShowImage(Uri imageUri)
