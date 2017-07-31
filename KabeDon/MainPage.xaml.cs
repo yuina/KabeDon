@@ -30,9 +30,13 @@ namespace KabeDon
             image.Tapped += Image_Tapped;
         }
 
+        private int i = 1;
+
         private void Image_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            var imageUri = new Uri("ms-appx:///Assets/Image/Claudia2.png");
+            ++i;
+            if (i > 4) i = 1;
+            var imageUri = new Uri($"ms-appx:///Assets/Image/Claudia{i}.png");
             ShowImage(imageUri);
         }
 
