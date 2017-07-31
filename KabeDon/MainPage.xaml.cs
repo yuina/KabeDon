@@ -32,6 +32,15 @@ namespace KabeDon
 
         private int i = 1;
 
+        static readonly Area[] areas = new[]
+        {
+            new Area {X = 396, Y = 238, Width = 320, Height =  108, Image = "Claudia4", Sound = "ah"},
+            new Area {X = 365, Y = 215, Width = 380, Height =  529, Image = "Claudia2", Sound = "ah"},
+            new Area {X = 276, Y = 340, Width =  65, Height =  415, Image = "Claudia3", Sound = "chui"},
+            new Area {X = 739, Y = 340, Width =  65, Height =  415, Image = "Claudia3", Sound = "chui"},
+            new Area {X = 271, Y = 772, Width = 590, Height = 1148, Image = "Claudia4", Sound = "oujougiwa"},
+        };
+
         private void Image_Tapped(object sender, TappedRoutedEventArgs e)
         {
             ++i;
