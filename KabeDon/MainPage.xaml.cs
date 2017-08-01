@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -38,6 +39,12 @@ namespace KabeDon
             score = 0;
             PlaySound(new Uri("ms-appx:///Assets/Sound/start.mp3"));
             image.Tapped += Image_Tapped;
+            await Task.Delay(5000);
+            image.Tapped -= Image_Tapped;
+            PlaySound(new Uri("ms-appx:///Assets/Sound/finish.mp3"));
+            var md = new MessageDialog($"あなたの壁ドン力は {score} です！", "そこまで！");
+            md.Commands.Add(new UICommand("Close"));
+            await md.ShowAsync();
             button.Visibility = Visibility.Visible;
         }
 
