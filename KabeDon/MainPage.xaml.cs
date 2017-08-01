@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage;
@@ -41,7 +42,7 @@ namespace KabeDon
             new Area {X = 271, Y = 772, Width = 590, Height = 1148, Image = "Claudia4", Sound = "oujougiwa"},
         };
 
-        private void Image_Tapped(object sender, TappedRoutedEventArgs e)
+        private async void Image_Tapped(object sender, TappedRoutedEventArgs e)
         {
             image.IsTapEnabled = false;
 
@@ -63,7 +64,9 @@ namespace KabeDon
                     break;
                 }
             }
+            await Task.Delay(1000);
             image.IsTapEnabled = true;
+            ShowImage(new Uri("ms-appx:///Assets/Image/Claudia1.png"));
         }
 
         private async void PlaySound(Uri mediaUri)
