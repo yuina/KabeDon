@@ -65,12 +65,20 @@ namespace KabeDon
 
             var pos = e.GetPosition(image);
 
+            TapAreaCheck(pos);
+            await Task.Delay(1000);
+            image.IsTapEnabled = true;
+            ShowImage(new Uri("ms-appx:///Assets/Image/Claudia1.png"));
+        }
+
+        private void TapAreaCheck(Point pos)
+        {
             var x = pos.X / image.ActualWidth * 1080;
             var y = pos.Y / image.ActualHeight * 1920;
 
             foreach (var area in areas)
             {
-                if (area.X < x && x < area.X + area.Width && area.Y < y && y < area.Y +area.Height)
+                if (area.X < x && x < area.X + area.Width && area.Y < y && y < area.Y + area.Height)
                 {
                     var mediaUri = new Uri($"ms-appx:///Assets/Sound/{area.Sound}.mp3");
                     PlaySound(mediaUri);
@@ -83,9 +91,6 @@ namespace KabeDon
                     break;
                 }
             }
-            await Task.Delay(1000);
-            image.IsTapEnabled = true;
-            ShowImage(new Uri("ms-appx:///Assets/Image/Claudia1.png"));
         }
 
         private async void PlaySound(Uri mediaUri)
