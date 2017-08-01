@@ -28,7 +28,17 @@ namespace KabeDon
         public MainPage()
         {
             this.InitializeComponent();
+            button.Click += Button_Click;
+            
+        }
+
+        private async void Button_Click(object sender, RoutedEventArgs e)
+        {
+            button.Visibility = Visibility.Collapsed;
+            score = 0;
+            PlaySound(new Uri("ms-appx:///Assets/Sound/start.mp3"));
             image.Tapped += Image_Tapped;
+            button.Visibility = Visibility.Visible;
         }
 
         private int score;
